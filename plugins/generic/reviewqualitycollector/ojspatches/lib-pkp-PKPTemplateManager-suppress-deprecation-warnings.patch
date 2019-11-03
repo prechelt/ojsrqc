@@ -1,0 +1,25 @@
+From 5218bb89363f72673dc3f7ae1468697b3931a7e6 Mon Sep 17 00:00:00 2001
+From: Lutz Prechelt <prechelt@inf.fu-berlin.de>
+Date: Sun, 3 Nov 2019 11:49:57 +0100
+Subject: [PATCH] PKPTemplateManager: suppress deprecation warnings
+
+---
+ classes/template/PKPTemplateManager.inc.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/classes/template/PKPTemplateManager.inc.php b/classes/template/PKPTemplateManager.inc.php
+index 03e7b2250..87cba743a 100644
+--- a/classes/template/PKPTemplateManager.inc.php
++++ b/classes/template/PKPTemplateManager.inc.php
+@@ -869,7 +869,7 @@ class PKPTemplateManager extends Smarty {
+ 	static function &getManager($request = null) {
+ 		if (!isset($request)) {
+ 			$request = Registry::get('request');
+-			if (Config::getVar('debug', 'deprecation_warnings')) trigger_error('Deprecated call without request object.');
++			// if (Config::getVar('debug', 'deprecation_warnings')) trigger_error('Deprecated call without request object.');
+ 		}
+ 		assert(is_a($request, 'PKPRequest'));
+ 
+-- 
+2.17.1
+

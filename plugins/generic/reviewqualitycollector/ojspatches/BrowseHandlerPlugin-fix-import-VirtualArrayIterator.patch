@@ -1,0 +1,26 @@
+From c41868af58da3cd821f9b907d6a19a5ca0da6456 Mon Sep 17 00:00:00 2001
+From: Lutz Prechelt <prechelt@inf.fu-berlin.de>
+Date: Fri, 12 Oct 2018 08:33:52 +0000
+Subject: [PATCH] Lutz: patch BrowseHandlerPlugin:
+ *lib.pkp.*classes.core.VirtualArrayIterator
+
+---
+ plugins/generic/browse/pages/BrowseHandler.inc.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/generic/browse/pages/BrowseHandler.inc.php b/plugins/generic/browse/pages/BrowseHandler.inc.php
+index 9f77bfe590..6cabb6ec75 100644
+--- a/plugins/generic/browse/pages/BrowseHandler.inc.php
++++ b/plugins/generic/browse/pages/BrowseHandler.inc.php
+@@ -14,7 +14,7 @@
+  */
+ 
+ import('classes.handler.Handler');
+-import('classes.core.VirtualArrayIterator');
++import('lib.pkp.classes.core.VirtualArrayIterator');
+ 
+ class BrowseHandler extends Handler {
+ 
+-- 
+2.17.1
+

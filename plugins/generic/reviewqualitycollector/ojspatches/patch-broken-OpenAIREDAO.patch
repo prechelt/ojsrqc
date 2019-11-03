@@ -1,0 +1,25 @@
+From ac670d06f1445975d67f1e3e9c640d44abf48ea5 Mon Sep 17 00:00:00 2001
+From: Lutz Prechelt <prechelt@inf.fu-berlin.de>
+Date: Wed, 11 Sep 2019 13:13:29 +0200
+Subject: [PATCH] OJS patch OpenAIREDAO
+
+---
+ plugins/generic/openAIRE/OpenAIREDAO.inc.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/generic/openAIRE/OpenAIREDAO.inc.php b/plugins/generic/openAIRE/OpenAIREDAO.inc.php
+index e6f8806c8b..a7bfff0ad0 100644
+--- a/plugins/generic/openAIRE/OpenAIREDAO.inc.php
++++ b/plugins/generic/openAIRE/OpenAIREDAO.inc.php
+@@ -22,7 +22,7 @@ class OpenAIREDAO extends OAIDAO {
+ 	 * Set parent OAI object.
+ 	 * @param JournalOAI
+ 	 */
+-	function setOAI(&$oai) {
++	function setOAI($oai) {
+ 		$this->oai = $oai;
+ 	}
+ 
+-- 
+2.17.1
+

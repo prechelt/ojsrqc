@@ -1,0 +1,31 @@
+From 579994fab347f9747e8b2eba5112767f7e7dd1de Mon Sep 17 00:00:00 2001
+From: Lutz Prechelt <prechelt@inf.fu-berlin.de>
+Date: Mon, 9 Sep 2019 13:27:27 +0200
+Subject: [PATCH] make HookRegistry ignore non-callable callbacks
+
+If display_errors=on, a broken plugin (such as OpenAIREPlugin
+in my case) that registers something that cannot be called,
+will provoke a message that breaks OJS's AJAX pages (because
+many JSON responses will become ill-formed).
+This patch ignores hook callbacks that are !is_callable
+and so makes OJS robust against such cases.
+---
+ classes/plugins/HookRegistry.inc.php | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/classes/plugins/HookRegistry.inc.php b/classes/plugins/HookRegistry.inc.php
+index ed2f764f8..19b642435 100644
+--- a/classes/plugins/HookRegistry.inc.php
++++ b/classes/plugins/HookRegistry.inc.php
+@@ -104,6 +104,8 @@ class HookRegistry {
+ 			ksort($hooks[$hookName], SORT_NUMERIC);
+ 			foreach ($hooks[$hookName] as $priority => $hookList) {
+ 				foreach ($hookList as $hook) {
++					if (!is_callable($hook))
++						continue;  // else broken plugins break OJS if display_errors = On
+ 					if ($result = call_user_func($hook, $hookName, $args)) return true;
+ 				}
+ 			}
+-- 
+2.17.1
+

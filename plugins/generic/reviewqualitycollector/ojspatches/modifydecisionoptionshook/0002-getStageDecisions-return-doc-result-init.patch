@@ -1,0 +1,27 @@
+From 6a275c7808711e8e4b1db4bfe21005499efd9fdf Mon Sep 17 00:00:00 2001
+From: Lutz Prechelt <prechelt@inf.fu-berlin.de>
+Date: Mon, 2 Sep 2019 12:19:20 +0200
+Subject: [PATCH 2/2] getStageDecisions: @return doc, result init
+
+---
+ classes/workflow/EditorDecisionActionsManager.inc.php | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/classes/workflow/EditorDecisionActionsManager.inc.php b/classes/workflow/EditorDecisionActionsManager.inc.php
+index 4f59199868..c27a41f6bc 100644
+--- a/classes/workflow/EditorDecisionActionsManager.inc.php
++++ b/classes/workflow/EditorDecisionActionsManager.inc.php
+@@ -91,8 +91,10 @@ class EditorDecisionActionsManager {
+ 	 * @param $context Context
+ 	 * @param $stageId int WORKFLOW_STAGE_ID_...
+ 	 * @param $makeDecision boolean If the user can make decisions
++	 * @return array describing the decision made in the given stage
+ 	 */
+ 	static function getStageDecisions($context, $stageId, $makeDecision = true) {
++		$result = null;
+ 		switch ($stageId) {
+ 			case WORKFLOW_STAGE_ID_SUBMISSION:
+ 				$result = self::_submissionStageDecisions($stageId, $makeDecision);
+-- 
+2.17.1
+
